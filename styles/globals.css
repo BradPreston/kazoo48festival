@@ -1,9 +1,15 @@
+@font-face {
+  font-family: BebasNeue;
+  src: url('../public/Fonts/BebasNeue.otf');
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'BebasNeue', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.1;
 }
 
 a {
@@ -13,4 +19,29 @@ a {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'BebasNeue', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+main {
+  background: #333;
+  min-height: 100vh;
+  width: 100%;
+}
+
+p {
+  color: #f2f2f2;
+  font-size: 18px;
+}
+
+.container {
+  padding: 0 20px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 36px;
+  text-align: center;
 }

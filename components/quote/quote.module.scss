@@ -1,0 +1,53 @@
+.bubble,
+.flipBubble {
+  position: relative;
+  width: 250px;
+  background-color: #9b5ca5;
+  border-radius: 10px;
+  font-family: sans-serif;
+  padding: 15px;
+  font-size: large;
+  margin-bottom: 20px;
+  z-index: 99;
+
+  .quotee {
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  .movie {
+    font-size: 14px;
+    text-align: right;
+  }
+
+  &:before,
+  &:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -20px;
+    border: 18px solid;
+    z-index: 1;
+  }
+}
+
+.bubble {
+  &:before,
+  &:after {
+    left: 28px;
+    border-color: #9b5ca5 transparent transparent #9b5ca5;
+  }
+}
+
+.flipBubble {
+  margin-left: auto;
+  z-index: 9999;
+
+  &:before,
+  &:after {
+    right: 28px;
+    border-color: #9b5ca5 #9b5ca5 transparent transparent;
+  }
+}

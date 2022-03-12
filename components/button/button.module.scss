@@ -1,0 +1,20 @@
+.link {
+  border: 2px solid #e2c936;
+  color: #f2f2f2;
+  width: fit-content;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.2s;
+  font-size: 25px;
+
+  &:hover {
+    background: rgba(226, 201, 54, 0.2);
+  }
+}
+
+.linkText {
+  padding: 8px 25px;
+}
