@@ -7,7 +7,7 @@ import { useForm, ValidationError } from '@formspree/react';
 export const getStaticProps: GetStaticProps = async context => {
   return {
     props: {
-      formspree: process.env.FORMSPREE_ID
+      formspree: process.env.NEXT_PUBLIC_FORMSPREE_ID
     }
   };
 };
