@@ -48,36 +48,38 @@ const Home: NextPage = () => {
             <section className={styles.rules}>
               <h2>Can you make a movie in 48 hours?</h2>
 
-              <div className={styles.ruleBlock}>
-                <Quote
-                  quote="“I'd never heard of a man who murdered by the rules.”"
-                  quotee="Sheriff Harry S. Truman"
-                  movie="Twin Peaks"
-                  isEven={false}
-                />
+              <div className={styles.ruleWrapper}>
+                <div className={styles.ruleBlock}>
+                  <Quote
+                    quote="“I'd never heard of a man who murdered by the rules.”"
+                    quotee="Sheriff Harry S. Truman"
+                    movie="Twin Peaks"
+                    isEven={false}
+                  />
 
-                <p>
-                  Make sure you know how to play by the rules before playing.
-                  You’ll find the official rules by clicking the link below.
-                </p>
+                  <p>
+                    Make sure you know how to play by the rules before playing.
+                    You’ll find the official rules by clicking the link below.
+                  </p>
 
-                <Button link="" text="Rules" />
-              </div>
+                  <Button link="/Kazoo48Rules.pdf" text="Rules" />
+                </div>
 
-              <div className={styles.ruleBlock}>
-                <Quote
-                  quote="“For in dreams, we enter a world that is entirely our own.”"
-                  quotee="Albus Dumbledore"
-                  movie="Harry Potter and the Prisoner of Azkaban"
-                  isEven={true}
-                />
+                <div className={styles.ruleBlock}>
+                  <Quote
+                    quote="“For in dreams, we enter a world that is entirely our own.”"
+                    quotee="Albus Dumbledore"
+                    movie="Harry Potter and the Prisoner of Azkaban"
+                    isEven={true}
+                  />
 
-                <p>
-                  Ready to join in the fun? Click the link below to register
-                  your team and conquer 48 hour challenge.
-                </p>
+                  <p>
+                    Ready to join in the fun? Click the link below to register
+                    your team and conquer 48 hour challenge.
+                  </p>
 
-                <Button link="" text="Enter" />
+                  <Button link="/enter" text="Enter" />
+                </div>
               </div>
             </section>
           </div>
@@ -96,25 +98,27 @@ const Home: NextPage = () => {
       </div>
 
       <footer className={styles.footer}>
-        <div className={styles.information}>
-          <div>
-            <p>contact</p>
-            <a href="mailto:kazoo48film@gmail.com">kazoo48film@gmail.com</a>
+        <div className={styles.footerContainer}>
+          <div className={styles.information}>
+            <div>
+              <p>contact</p>
+              <a href="mailto:kazoo48film@gmail.com">kazoo48film@gmail.com</a>
+            </div>
+
+            <div>
+              <p>Kalamazoo institute of arts (kia)</p>
+              <p>314 S Park St, Kalamazoo, MI 49007</p>
+            </div>
           </div>
 
-          <div>
-            <p>Kalamazoo institute of arts (kia)</p>
-            <p>314 S Park St, Kalamazoo, MI 49007</p>
+          <div className={styles.footerLogo}>
+            <Image
+              src={FooterLogo}
+              alt="Kazoo Logo"
+              layout="fill"
+              objectFit="contain"
+            ></Image>
           </div>
-        </div>
-
-        <div className={styles.footerLogo}>
-          <Image
-            src={FooterLogo}
-            alt="Kazoo Logo"
-            layout="fill"
-            objectFit="contain"
-          ></Image>
         </div>
       </footer>
     </div>
