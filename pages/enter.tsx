@@ -2,14 +2,12 @@ import type { NextPage, GetStaticProps } from 'next';
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Enter.module.scss';
-import Head from 'next/head';
-import Script from 'next/script';
 import { useForm, ValidationError } from '@formspree/react';
 
 export const getStaticProps: GetStaticProps = async context => {
   return {
     props: {
-      formspree: process.env.FORMSPREE_ID?.toString()
+      formspree: process.env.FORMSPREE_ID
     }
   };
 };
