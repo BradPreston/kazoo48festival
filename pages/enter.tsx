@@ -34,13 +34,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
 
   return (
     <div className={styles.enter}>
-      <Head>
-        <Script
-          src="https://www.google.com/recaptcha/api.js"
-          async
-          defer
-        ></Script>
-      </Head>
       <Link href="/">
         <a>Go Home</a>
       </Link>
@@ -215,10 +208,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
             />
           </p>
         </div>
-        <div
-          className="g-recaptcha"
-          data-sitekey="6LcHe98eAAAAABOZSk0GuGXyISNO9pFyDayfcEdN"
-        ></div>
         <button type="submit" disabled={state.submitting}>
           Send
         </button>
