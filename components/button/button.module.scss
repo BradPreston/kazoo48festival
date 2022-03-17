@@ -1,6 +1,8 @@
+@import '../../styles/variables.scss';
+
 .link {
-  border: 2px solid #e2c936;
-  color: #f2f2f2;
+  border: 2px solid $yellow;
+  color: $white;
   width: fit-content;
   border-radius: 30px;
   display: flex;
@@ -11,7 +13,7 @@
   font-size: 25px;
 
   &:hover {
-    background: rgba(226, 201, 54, 0.2);
+    background: $trans-yellow;
   }
 }
 

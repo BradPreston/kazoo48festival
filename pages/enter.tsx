@@ -33,7 +33,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
   return (
     <div className={styles.enter}>
       <Link href="/">
-        <a>Go Home</a>
+        <a className={styles.back}>Go Back</a>
       </Link>
       <h1>Please buy a ticket</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -177,6 +177,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               name="Additional Emails"
               id="additionalEmails"
               value={additionalEmails}
+              rows={3}
               onChange={e => {
                 setAdditionalEmails(e.target.value);
               }}
@@ -195,6 +196,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               id="message"
               value={message}
               required={true}
+              rows={3}
               onChange={e => {
                 setMessage(e.target.value);
               }}
@@ -209,7 +211,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
         <button type="submit" disabled={state.submitting}>
           Send
         </button>
-        <p>*fields are required</p>
+        <p>* fields are required</p>
       </form>
     </div>
   );

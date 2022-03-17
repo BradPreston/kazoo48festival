@@ -1,14 +1,16 @@
+@import '../../styles/variables.scss';
+
 .date {
   width: fit-content;
 
   .type,
   .timeLocation {
-    color: #e2c936;
+    color: $yellow;
     text-align: left;
   }
   .date {
-    color: #f2f2f2;
-    background: #e2c936;
+    color: $white;
+    background: $yellow;
     width: fit-content;
     padding: 4px 10px;
     border-radius: 4px;

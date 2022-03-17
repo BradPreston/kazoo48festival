@@ -1,8 +1,10 @@
+@import '../../styles/variables.scss';
+
 .bubble,
 .flipBubble {
   position: relative;
   width: 250px;
-  background-color: #9b5ca5;
+  // background-color: #9b5ca5;
   border-radius: 10px;
   font-family: sans-serif;
   padding: 15px;
@@ -28,26 +30,29 @@
     width: 0;
     height: 0;
     bottom: -20px;
-    border: 18px solid;
+    border: 10px solid;
     z-index: 1;
   }
 }
 
 .bubble {
+  background: linear-gradient(to bottom left, $dark-purple, $purple);
+
   &:before,
   &:after {
     left: 28px;
-    border-color: #9b5ca5 transparent transparent #9b5ca5;
+    border-color: $purple transparent transparent $purple;
   }
 }
 
 .flipBubble {
   margin-left: auto;
   z-index: 9999;
+  background: linear-gradient(to bottom right, $dark-purple, $purple);
 
   &:before,
   &:after {
     right: 28px;
-    border-color: #9b5ca5 #9b5ca5 transparent transparent;
+    border-color: $purple $purple transparent transparent;
   }
 }
