@@ -45,7 +45,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               id="firstName"
               name="First Name"
               value={firstName}
-              placeholder="Jeff"
+              placeholder="David"
               required={true}
               onChange={e => {
                 const firstName = e.target.value;
@@ -67,7 +67,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               id="lastName"
               name="Last Name"
               value={lastName}
-              placeholder="Gordon"
+              placeholder="Lynch"
               required={true}
               onChange={e => {
                 const lastName = e.target.value;
@@ -118,7 +118,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               id="email"
               name="Email"
               value={email}
-              placeholder="jgordon@nascar.com"
+              placeholder="gordoncole@twinpeaks.com"
               required={true}
               onChange={e => {
                 setEmail(e.target.value.toLowerCase());
@@ -158,7 +158,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               id="teamName"
               name="Team Name"
               value={teamName}
-              placeholder="My Awesome Team"
+              placeholder="The Deputy Directors"
               required={true}
               onChange={e => {
                 setTeamName(e.target.value);
