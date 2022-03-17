@@ -35,7 +35,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
       <Link href="/">
         <a className={styles.back}>Go Back</a>
       </Link>
-      <h1>Please buy a ticket</h1>
+      <h1>Registration</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.contactInfo}>
           <p>
