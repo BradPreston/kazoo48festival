@@ -1,22 +1,9 @@
-import type { NextPage, GetStaticProps } from 'next';
+import type { NextPage } from 'next';
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Enter.module.scss';
-import { useForm, ValidationError } from '@formspree/react';
 
-export const getStaticProps: GetStaticProps = async context => {
-  return {
-    props: {
-      formspree: process.env.FORMSPREE_ID
-    }
-  };
-};
-
-interface Props {
-  formspree: string;
-}
-
-const Enter: NextPage<Props> = ({ formspree }) => {
+const Enter: NextPage = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -25,10 +12,27 @@ const Enter: NextPage<Props> = ({ formspree }) => {
   const [message, setMessage] = useState('');
   const [category, setCategory] = useState('Amateur');
   const [phone, setPhone] = useState('');
-  const [state, handleSubmit] = useForm(formspree);
-  if (state.succeeded) {
-    return <p>Good luck in the show!</p>;
-  }
+
+  const sendMessage = (e: any) => {
+    e.preventDefault();
+
+    fetch('https://enibio4i9kjaywm.m.pipedream.net', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        additionalEmails: additionalEmails,
+        teamName: teamName,
+        message: message,
+        category: category,
+        phone: phone
+      })
+    });
+  };
 
   return (
     <div className={styles.enter}>
@@ -36,7 +40,7 @@ const Enter: NextPage<Props> = ({ formspree }) => {
         <a className={styles.back}>Go Back</a>
       </Link>
       <h1>Registration</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={sendMessage}>
         <div className={styles.contactInfo}>
           <p>
             <label htmlFor="firstName">First Name *</label>
@@ -53,11 +57,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
                   firstName.charAt(0).toUpperCase() + firstName.slice(1)
                 );
               }}
-            />
-            <ValidationError
-              prefix="firstName"
-              field="firstName"
-              errors={state.errors}
             />
           </p>
           <p>
@@ -76,11 +75,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
                 );
               }}
             />
-            <ValidationError
-              prefix="lastName"
-              field="lastName"
-              errors={state.errors}
-            />
           </p>
           <p>
             <label htmlFor="phone">Phone Number *</label>
@@ -88,7 +82,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               type="tel"
               id="phone"
               name="Phone Number"
-              // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               value={phone}
               placeholder="(123) 456-7890"
               required={true}
@@ -105,11 +98,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
                 }
               }}
             />
-            <ValidationError
-              prefix="phone"
-              field="phone"
-              errors={state.errors}
-            />
           </p>
           <p>
             <label htmlFor="email">Email *</label>
@@ -123,11 +111,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               onChange={e => {
                 setEmail(e.target.value.toLowerCase());
               }}
-            />
-            <ValidationError
-              prefix="email"
-              field="email"
-              errors={state.errors}
             />
           </p>
           <p>
@@ -144,11 +127,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
               <option value="Amateur">Amateur</option>
               <option value="Professional">Professional</option>
             </select>
-            <ValidationError
-              prefix="category"
-              field="category"
-              errors={state.errors}
-            />
           </p>
 
           <p>
@@ -164,11 +142,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
                 setTeamName(e.target.value);
               }}
             />
-            <ValidationError
-              prefix="teamName"
-              field="teamName"
-              errors={state.errors}
-            />
           </p>
 
           <p>
@@ -182,11 +155,6 @@ const Enter: NextPage<Props> = ({ formspree }) => {
                 setAdditionalEmails(e.target.value);
               }}
             ></textarea>
-            <ValidationError
-              prefix="additionalEmails"
-              field="additionalEmails"
-              errors={state.errors}
-            />
           </p>
 
           <p>
@@ -201,16 +169,9 @@ const Enter: NextPage<Props> = ({ formspree }) => {
                 setMessage(e.target.value);
               }}
             ></textarea>
-            <ValidationError
-              prefix="Message"
-              field="Message"
-              errors={state.errors}
-            />
           </p>
         </div>
-        <button type="submit" disabled={state.submitting}>
-          Send
-        </button>
+        <button type="submit">Send</button>
         <p>* fields are required</p>
       </form>
     </div>
