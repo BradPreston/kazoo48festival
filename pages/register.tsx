@@ -50,6 +50,8 @@ const Register: NextPage = () => {
         category: category,
         phone: phone
       })
+    }).then(() => {
+      return fetch('/api/checkout_sessions', { method: 'POST' });
     });
   };
 
@@ -59,11 +61,7 @@ const Register: NextPage = () => {
         <a className={styles.back}>Go Back</a>
       </Link>
       <h1>Registration</h1>
-      <form
-        action="/api/checkout_sessions"
-        method="POST"
-        className={styles.form}
-      >
+      <form onSubmit={sendMessage} className={styles.form}>
         <div className={styles.contactInfo}>
           <p>
             <label htmlFor="firstName">First Name *</label>
@@ -191,9 +189,7 @@ const Register: NextPage = () => {
             ></textarea>
           </p>
         </div>
-        <button onClick={sendMessage} type="submit">
-          Continue to Payment
-        </button>
+        <button type="submit">Continue to Payment</button>
       </form>
 
       {/* <form
