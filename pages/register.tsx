@@ -33,7 +33,7 @@ const Register: NextPage = () => {
   const [phone, setPhone] = useState('');
 
   const sendMessage = (e: any) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     fetch('https://enyrt013m3vpwzi.m.pipedream.net', {
       method: 'POST',
