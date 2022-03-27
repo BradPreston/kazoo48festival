@@ -51,7 +51,7 @@ const Register: NextPage = () => {
         phone: phone
       })
     }).then(() => {
-      fetch('/api/checkout_sessions', { method: 'POST' });
+      return fetch('/api/checkout_sessions', { method: 'POST' });
     });
   };
 
