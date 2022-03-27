@@ -78,7 +78,7 @@ const Home: NextPage = () => {
                     your team and conquer 48 hour challenge.
                   </p>
 
-                  <Button link="/enter" text="Enter" />
+                  <Button link="/register" text="Register" />
                 </div>
               </div>
             </section>

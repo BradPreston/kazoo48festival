@@ -1,9 +1,28 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Enter.module.scss';
+import { loadStripe } from '@stripe/stripe-js';
 
-const Enter: NextPage = () => {
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+);
+
+const Register: NextPage = () => {
+  React.useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    if (query.get('success')) {
+      console.log('Order placed! You will receive an email confirmation.');
+    }
+
+    if (query.get('canceled')) {
+      console.log(
+        'Order canceled -- continue to shop around and checkout when you’re ready.'
+      );
+    }
+  }, []);
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,9 +33,9 @@ const Enter: NextPage = () => {
   const [phone, setPhone] = useState('');
 
   const sendMessage = (e: any) => {
-    e.preventDefault();
+    // e.preventDefault();
 
-    fetch('https://enibio4i9kjaywm.m.pipedream.net', {
+    fetch('https://enyrt013m3vpwzi.m.pipedream.net', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -40,7 +59,12 @@ const Enter: NextPage = () => {
         <a className={styles.back}>Go Back</a>
       </Link>
       <h1>Registration</h1>
-      <form className={styles.form} onSubmit={sendMessage}>
+      <form
+        action="/api/checkout_sessions"
+        method="POST"
+        className={styles.form}
+        onSubmit={sendMessage}
+      >
         <div className={styles.contactInfo}>
           <p>
             <label htmlFor="firstName">First Name *</label>
@@ -90,9 +114,6 @@ const Enter: NextPage = () => {
                 var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
                 if (match) {
                   setPhone('(' + match[1] + ') ' + match[2] + '-' + match[3]);
-                  console.log(
-                    '(' + match[1] + ') ' + match[2] + '-' + match[3]
-                  );
                 } else {
                   setPhone(e.target.value);
                 }
@@ -171,11 +192,65 @@ const Enter: NextPage = () => {
             ></textarea>
           </p>
         </div>
-        <button type="submit">Send</button>
-        <p>* fields are required</p>
+        <button type="submit">Continue to Payment</button>
       </form>
+
+      {/* <form
+        className={styles.form}
+        action="/api/checkout_sessions"
+        method="POST"
+      >
+        <section>
+          <button
+            id="checkout"
+            type="submit"
+            role="link"
+            disabled={
+              !firstName &&
+              !lastName &&
+              !email &&
+              !teamName &&
+              !message &&
+              !category &&
+              !phone
+            }
+          >
+            Continue To Payment
+          </button>
+          <p>* fields are required</p>
+        </section>
+        <style jsx>
+          {`
+            section {
+              background: #ffffff;
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              // height: 112px;
+              border-radius: 6px;
+              justify-content: space-between;
+            }
+            button {
+              // height: 36px;
+              padding: 10px 0;
+              background: #556cd6;
+              border-radius: 4px;
+              color: white;
+              border: 0;
+              font-size: 20px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s ease;
+              box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+            }
+            button:hover {
+              opacity: 0.8;
+            }
+          `}
+        </style>
+      </form> */}
     </div>
   );
 };
 
-export default Enter;
+export default Register;

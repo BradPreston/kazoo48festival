@@ -54,3 +54,14 @@ h2 {
     padding: 0;
   }
 }
+
+.ul {
+  background: #fff;
+
+  color: black;
+}
+
+.ul p,
+.ul h2 {
+  color: black;
+}
