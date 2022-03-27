@@ -63,7 +63,6 @@ const Register: NextPage = () => {
         action="/api/checkout_sessions"
         method="POST"
         className={styles.form}
-        onSubmit={sendMessage}
       >
         <div className={styles.contactInfo}>
           <p>
@@ -192,7 +191,9 @@ const Register: NextPage = () => {
             ></textarea>
           </p>
         </div>
-        <button type="submit">Continue to Payment</button>
+        <button onClick={sendMessage} type="submit">
+          Continue to Payment
+        </button>
       </form>
 
       {/* <form
