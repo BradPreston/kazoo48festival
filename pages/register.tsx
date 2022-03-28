@@ -1,41 +1,17 @@
 import type { NextPage } from 'next';
-import React, { useState } from 'react';
+import React, { FormEventHandler, useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Enter.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
+import { NodeNextRequest } from 'next/dist/server/base-http/node';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
 const Register: NextPage = () => {
-  React.useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
-    if (query.get('success')) {
-      console.log('Order placed! You will receive an email confirmation.');
-    }
-
-    if (query.get('canceled')) {
-      console.log(
-        'Order canceled -- continue to shop around and checkout when you’re ready.'
-      );
-    }
-  }, []);
-
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [additionalEmails, setAdditionalEmails] = useState('');
-  const [teamName, setTeamName] = useState('');
-  const [message, setMessage] = useState('');
-  const [category, setCategory] = useState('Amateur');
-  const [phone, setPhone] = useState('');
-
-  const sendMessage = (e: any) => {
-    e.preventDefault();
-
-    fetch('https://enyrt013m3vpwzi.m.pipedream.net', {
+  const sendEmail = () => {
+    fetch('https://enkexikee59wnty.m.pipedream.net', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -50,9 +26,87 @@ const Register: NextPage = () => {
         category: category,
         phone: phone
       })
-    }).then(() => {
-      return fetch('/api/checkout_sessions', { method: 'POST' });
     });
+  };
+
+  React.useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    console.log(query);
+    if (query.get('success')) {
+      console.log('Order placed! You will receive an email confirmation.');
+      sendEmail();
+    }
+
+    if (query.get('canceled')) {
+      console.log(
+        'Order canceled -- continue to shop around and checkout when you’re ready.'
+      );
+    }
+    // console.log(window.location.href);
+
+    // document.getElementById('checkout')?.addEventListener('click', () => {
+    //   // e.preventDefault();
+    //   // const stripeForm: any = document.getElementById('stripeForm');
+    //   // stripeForm?.submit();
+    //   // sendMessage();
+    //   fetch('https://enyrt013m3vpwzi.m.pipedream.net', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       firstName: firstName,
+    //       lastName: lastName,
+    //       email: email,
+    //       additionalEmails: additionalEmails,
+    //       teamName: teamName,
+    //       message: message,
+    //       category: category,
+    //       phone: phone
+    //     })
+    //   }).then(() => {
+    //     return fetch('/api/checkout_sessions', { method: 'POST' });
+    //   });
+    // });
+  }, []);
+
+  const [firstName, setFirstName] = useState('Brad');
+  const [lastName, setLastName] = useState('Preston');
+  const [email, setEmail] = useState('bap5393@gmail.com');
+  const [additionalEmails, setAdditionalEmails] = useState('');
+  const [teamName, setTeamName] = useState('My Test Team');
+  const [message, setMessage] = useState('Test');
+  const [category, setCategory] = useState('Amateur');
+  const [phone, setPhone] = useState('(269) 823-2628');
+
+  const sendMessage = async (e: any) => {
+    // sendEmail();
+    fetch('/api/checkout_sessions', { method: 'POST' });
+
+    // e.preventDefault();
+    // fetch('https://enyrt013m3vpwzi.m.pipedream.net', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     email: email,
+    //     additionalEmails: additionalEmails,
+    //     teamName: teamName,
+    //     message: message,
+    //     category: category,
+    //     phone: phone
+    //   })
+    // });
+    // sendEmail(null);
+    // });
+
+    // console.log(sendEmail);
+
+    // if (sendEmail) return fetch('/api/checkout_sessions', { method: 'POST' });
   };
 
   return (
@@ -61,7 +115,7 @@ const Register: NextPage = () => {
         <a className={styles.back}>Go Back</a>
       </Link>
       <h1>Registration</h1>
-      <form onSubmit={sendMessage} className={styles.form}>
+      <div className={styles.form}>
         <div className={styles.contactInfo}>
           <p>
             <label htmlFor="firstName">First Name *</label>
@@ -189,11 +243,12 @@ const Register: NextPage = () => {
             ></textarea>
           </p>
         </div>
-        <button type="submit">Continue to Payment</button>
-      </form>
+        {/* <button type="submit">Continue to Payment</button> */}
+      </div>
 
-      {/* <form
-        className={styles.form}
+      <form
+        className={styles.form2}
+        id="stripeForm"
         action="/api/checkout_sessions"
         method="POST"
       >
@@ -202,13 +257,14 @@ const Register: NextPage = () => {
             id="checkout"
             type="submit"
             role="link"
+            // onClick={sendMessage}
             disabled={
-              !firstName &&
-              !lastName &&
-              !email &&
-              !teamName &&
-              !message &&
-              !category &&
+              !firstName ||
+              !lastName ||
+              !email ||
+              !teamName ||
+              !message ||
+              !category ||
               !phone
             }
           >
@@ -220,12 +276,12 @@ const Register: NextPage = () => {
           {`
             section {
               background: #ffffff;
-              display: flex;
               flex-direction: column;
               width: 100%;
               // height: 112px;
               border-radius: 6px;
               justify-content: space-between;
+              // display: none;
             }
             button {
               // height: 36px;
@@ -245,7 +301,7 @@ const Register: NextPage = () => {
             }
           `}
         </style>
-      </form> */}
+      </form>
     </div>
   );
 };
