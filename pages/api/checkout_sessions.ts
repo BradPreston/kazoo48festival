@@ -18,7 +18,7 @@ export default async function handler(
           }
         ],
         mode: 'payment',
-        success_url: `${req.headers.origin}/success`,
+        success_url: `${req.headers.origin}/thankyou`,
         cancel_url: `${req.headers.origin}/register`,
         payment_method_types: ['card']
       });
