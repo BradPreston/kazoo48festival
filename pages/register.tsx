@@ -1,112 +1,39 @@
 import type { NextPage } from 'next';
-import React, { FormEventHandler, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import styles from '../styles/Enter.module.scss';
+import styles from '../styles/Register.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
-import { NodeNextRequest } from 'next/dist/server/base-http/node';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
 const Register: NextPage = () => {
-  const sendEmail = () => {
-    fetch('https://enkexikee59wnty.m.pipedream.net', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        additionalEmails: additionalEmails,
-        teamName: teamName,
-        message: message,
-        category: category,
-        phone: phone
-      })
-    });
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [additionalEmails, setAdditionalEmails] = useState('');
+  const [teamName, setTeamName] = useState('');
+  const [message, setMessage] = useState('');
+  const [category, setCategory] = useState('Amateur');
+  const [phone, setPhone] = useState('');
+
+  const data = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    additionalEmails: additionalEmails,
+    teamName: teamName,
+    message: message,
+    category: category,
+    phone: phone
   };
 
-  React.useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
-    console.log(query);
-    if (query.get('success')) {
-      console.log('Order placed! You will receive an email confirmation.');
-      sendEmail();
+  const setLocalStorage = () => {
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('formData')) localStorage.removeItem('formData');
+      localStorage.setItem('formData', JSON.stringify(data));
     }
-
-    if (query.get('canceled')) {
-      console.log(
-        'Order canceled -- continue to shop around and checkout when you’re ready.'
-      );
-    }
-    // console.log(window.location.href);
-
-    // document.getElementById('checkout')?.addEventListener('click', () => {
-    //   // e.preventDefault();
-    //   // const stripeForm: any = document.getElementById('stripeForm');
-    //   // stripeForm?.submit();
-    //   // sendMessage();
-    //   fetch('https://enyrt013m3vpwzi.m.pipedream.net', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       firstName: firstName,
-    //       lastName: lastName,
-    //       email: email,
-    //       additionalEmails: additionalEmails,
-    //       teamName: teamName,
-    //       message: message,
-    //       category: category,
-    //       phone: phone
-    //     })
-    //   }).then(() => {
-    //     return fetch('/api/checkout_sessions', { method: 'POST' });
-    //   });
-    // });
-  }, []);
-
-  const [firstName, setFirstName] = useState('Brad');
-  const [lastName, setLastName] = useState('Preston');
-  const [email, setEmail] = useState('bap5393@gmail.com');
-  const [additionalEmails, setAdditionalEmails] = useState('');
-  const [teamName, setTeamName] = useState('My Test Team');
-  const [message, setMessage] = useState('Test');
-  const [category, setCategory] = useState('Amateur');
-  const [phone, setPhone] = useState('(269) 823-2628');
-
-  const sendMessage = async (e: any) => {
-    // sendEmail();
-    fetch('/api/checkout_sessions', { method: 'POST' });
-
-    // e.preventDefault();
-    // fetch('https://enyrt013m3vpwzi.m.pipedream.net', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     firstName: firstName,
-    //     lastName: lastName,
-    //     email: email,
-    //     additionalEmails: additionalEmails,
-    //     teamName: teamName,
-    //     message: message,
-    //     category: category,
-    //     phone: phone
-    //   })
-    // });
-    // sendEmail(null);
-    // });
-
-    // console.log(sendEmail);
-
-    // if (sendEmail) return fetch('/api/checkout_sessions', { method: 'POST' });
   };
 
   return (
@@ -243,11 +170,10 @@ const Register: NextPage = () => {
             ></textarea>
           </p>
         </div>
-        {/* <button type="submit">Continue to Payment</button> */}
       </div>
 
       <form
-        className={styles.form2}
+        className={styles.form}
         id="stripeForm"
         action="/api/checkout_sessions"
         method="POST"
@@ -257,7 +183,7 @@ const Register: NextPage = () => {
             id="checkout"
             type="submit"
             role="link"
-            // onClick={sendMessage}
+            onClick={setLocalStorage}
             disabled={
               !firstName ||
               !lastName ||
@@ -270,37 +196,8 @@ const Register: NextPage = () => {
           >
             Continue To Payment
           </button>
-          <p>* fields are required</p>
         </section>
-        <style jsx>
-          {`
-            section {
-              background: #ffffff;
-              flex-direction: column;
-              width: 100%;
-              // height: 112px;
-              border-radius: 6px;
-              justify-content: space-between;
-              // display: none;
-            }
-            button {
-              // height: 36px;
-              padding: 10px 0;
-              background: #556cd6;
-              border-radius: 4px;
-              color: white;
-              border: 0;
-              font-size: 20px;
-              font-weight: 600;
-              cursor: pointer;
-              transition: all 0.2s ease;
-              box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-            }
-            button:hover {
-              opacity: 0.8;
-            }
-          `}
-        </style>
+        <p>* fields are required</p>
       </form>
     </div>
   );
