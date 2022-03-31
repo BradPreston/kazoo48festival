@@ -74,7 +74,7 @@ const Register: NextPage = () => {
               value={firstName}
               placeholder="David"
               required={true}
-              autoComplete="off"
+              autoComplete="new-password"
               onChange={e => {
                 const firstName = e.target.value;
                 setFirstName(
@@ -91,7 +91,7 @@ const Register: NextPage = () => {
               name="Last Name"
               value={lastName}
               placeholder="Lynch"
-              autoComplete="off"
+              autoComplete="new-password"
               required={true}
               onChange={e => {
                 const lastName = e.target.value;
@@ -109,7 +109,7 @@ const Register: NextPage = () => {
               name="Phone Number"
               value={phone}
               placeholder="(123) 456-7890"
-              autoComplete="off"
+              autoComplete="new-password"
               required={true}
               onChange={e => {
                 var cleaned = ('' + e.target.value).replace(/\D/g, '');
@@ -130,7 +130,7 @@ const Register: NextPage = () => {
               name="Email"
               value={email}
               placeholder="gordoncole@twinpeaks.com"
-              autoComplete="off"
+              autoComplete="new-password"
               required={true}
               onChange={e => {
                 setEmail(e.target.value.toLowerCase());
