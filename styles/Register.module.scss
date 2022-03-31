@@ -57,16 +57,11 @@
       font-size: 16px;
     }
 
-    @-webkit-keyframes autofill {
-      to {
-        color: #fff;
-        background: rgba(226, 201, 54, 0.2);
-      }
-    }
-
-    input:-webkit-autofill {
-      -webkit-animation-name: autofill;
-      -webkit-animation-fill-mode: both;
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px $trans-yellow inset !important;
     }
 
     select {
