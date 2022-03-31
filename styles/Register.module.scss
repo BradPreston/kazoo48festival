@@ -57,6 +57,18 @@
       font-size: 16px;
     }
 
+    @-webkit-keyframes autofill {
+      to {
+        color: #fff;
+        background: rgba(226, 201, 54, 0.2);
+      }
+    }
+
+    input:-webkit-autofill {
+      -webkit-animation-name: autofill;
+      -webkit-animation-fill-mode: both;
+    }
+
     select {
       background: rgba(226, 201, 54, 0.2);
 
