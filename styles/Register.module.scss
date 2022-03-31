@@ -57,6 +57,10 @@
       font-size: 16px;
     }
 
+    input:-webkit-autofill {
+      background: rgba(226, 201, 54, 0.2);
+    }
+
     select {
       background: rgba(226, 201, 54, 0.2);
 
