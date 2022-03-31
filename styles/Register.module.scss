@@ -57,7 +57,10 @@
       font-size: 16px;
     }
 
-    input:-webkit-autofill {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
       background: rgba(226, 201, 54, 0.2);
     }
 
