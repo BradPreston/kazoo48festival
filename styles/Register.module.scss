@@ -57,6 +57,14 @@
       font-size: 16px;
     }
 
+    select {
+      background: rgba(226, 201, 54, 0.2);
+
+      &:hover {
+        background: transparent;
+      }
+    }
+
     option {
       color: $black;
     }

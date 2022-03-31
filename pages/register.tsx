@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Register.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
@@ -35,6 +35,27 @@ const Register: NextPage = () => {
       localStorage.setItem('formData', JSON.stringify(data));
     }
   };
+
+  useEffect(() => {
+    const inputs = document.querySelectorAll('input');
+    const textareas = document.querySelectorAll('textarea');
+
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('change', function (e: any) {
+        if (e.target.value != '')
+          inputs[i].style.background = 'rgba(226, 201, 54, .2)';
+        else inputs[i].style.background = 'transparent';
+      });
+    }
+
+    for (let i = 0; i < textareas.length; i++) {
+      textareas[i].addEventListener('change', function (e: any) {
+        if (e.target.value != '')
+          textareas[i].style.background = 'rgba(226, 201, 54, .2)';
+        else textareas[i].style.background = 'transparent';
+      });
+    }
+  }, []);
 
   return (
     <div className={styles.enter}>
