@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Register.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
+import Head from 'next/head';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -57,6 +58,16 @@ const Register: NextPage = () => {
 
   return (
     <div className={styles.enter}>
+      <Head>
+        <title>Register | Kazoo48</title>
+        <meta
+          name="description"
+          content="Register to compete in the Kazoo 48 Hour film Festival"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Link href="/">
         <a className={styles.back}>Go Back</a>
       </Link>

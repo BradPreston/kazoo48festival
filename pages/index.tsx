@@ -13,11 +13,12 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Kazoo48 Home</title>
+        <title>Home | Kazoo48</title>
         <meta
-          name="Kazoo48 Home"
+          name="description"
           content="Welcome to the Kalamazoo 48 Hour Film Festival."
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

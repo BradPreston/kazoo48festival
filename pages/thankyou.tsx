@@ -1,6 +1,7 @@
 import styles from '../styles/success.module.scss';
 import Link from 'next/link';
 import type { NextPage } from 'next';
+import Head from 'next/head';
 
 const Success: NextPage = () => {
   if (typeof window !== 'undefined') {
@@ -29,6 +30,17 @@ const Success: NextPage = () => {
 
   return (
     <div className={styles.success}>
+      <Head>
+        <title>Thank You | Kazoo48</title>
+        <meta
+          name="description"
+          content="Thank you for signing up to compete in the Kazoo 48 Hour Film Festival"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <h1>Good luck in the show!</h1>
       <p>
         You will get an email with your reciept shortly. If you do not recieve
