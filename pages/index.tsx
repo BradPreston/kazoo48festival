@@ -89,9 +89,9 @@ const Home: NextPage = () => {
             <div className="container">
               <h2>Mark your calendars</h2>
               <div className={styles.dateComponentWrapper}>
-                <Date type="start" date="10/22/22" time="6 pm" />
-                <Date type="finish" date="10/24/22" time="6 pm" />
-                <Date type="screening" date="11/11/22" location="kia" />
+                <Date type="start" date="3/31/23" time="6 pm" />
+                <Date type="finish" date="4/2/23" time="6 pm" />
+                <Date type="screening" date="4/20/23" location="kia at 6:30 pm" />
               </div>
             </div>
           </section>

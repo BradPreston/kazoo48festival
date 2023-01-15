@@ -36,23 +36,23 @@
 }
 
 .bubble {
-  background: linear-gradient(to bottom left, $dark-purple, $purple);
+  background: linear-gradient(to bottom left, $dark-green, $green);
 
   &:before,
   &:after {
     left: 28px;
-    border-color: $purple transparent transparent $purple;
+    border-color: $green transparent transparent $green;
   }
 }
 
 .flipBubble {
   margin-left: auto;
   z-index: 9999;
-  background: linear-gradient(to bottom right, $dark-purple, $purple);
+  background: linear-gradient(to bottom right, $dark-green, $green);
 
   &:before,
   &:after {
     right: 28px;
-    border-color: $purple $purple transparent transparent;
+    border-color: $green $green transparent transparent;
   }
 }
