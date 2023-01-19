@@ -8,7 +8,7 @@ const Success: NextPage = () => {
     if (localStorage.getItem('formData')) {
       const formData = JSON.parse(localStorage.formData);
 
-      fetch('https://enkexikee59wnty.m.pipedream.net', {
+      fetch('https://ensnps8j71y81u5.m.pipedream.net', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
