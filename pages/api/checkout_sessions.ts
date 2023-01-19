@@ -13,7 +13,7 @@ export default async function handler(
         line_items: [
           {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: 'price_1KhIrHCYB6zoXX7hGe4OT1xP',
+            price: process.env.STRIPE_PRICE,
             quantity: 1
           }
         ],
