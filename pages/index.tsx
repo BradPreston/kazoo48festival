@@ -94,7 +94,8 @@ const Home: NextPage = () => {
                 <Date
                   type="screening"
                   date="4/10/24"
-                  location="Kalamazoo&nbsp;10 at 6:30 pm"
+                  // location="Kalamazoo&nbsp;10 at 6:30 pm"
+                  location="Kalamazoo&nbsp;10"
                 />
               </div>
             </div>
