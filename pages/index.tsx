@@ -1,13 +1,13 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.scss';
-import HeroBackground from '../public/images/Kazoo48Crowd.jpeg';
-import HeroLogo from '../public/images/transparent_logo.png';
-import FooterLogo from '../public/images/Kazoo.png';
-import Button from '../components/button/button';
-import Quote from '../components/quote/quote';
-import Date from '../components/date/date';
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.scss";
+import HeroBackground from "../public/images/Kazoo48Crowd.jpeg";
+import HeroLogo from "../public/images/transparent_logo.png";
+import FooterLogo from "../public/images/Kazoo.png";
+import Button from "../components/button/button";
+import Quote from "../components/quote/quote";
+import Date from "../components/date/date";
 
 const Home: NextPage = () => {
   return (
@@ -89,9 +89,13 @@ const Home: NextPage = () => {
             <div className="container">
               <h2>Mark your calendars</h2>
               <div className={styles.dateComponentWrapper}>
-                <Date type="start" date="3/31/23" time="6 pm" />
-                <Date type="finish" date="4/2/23" time="6 pm" />
-                <Date type="screening" date="4/20/23" location="kia at 6:30 pm" />
+                <Date type="start" date="4/5/24" time="6 pm" />
+                <Date type="finish" date="4/7/24" time="6 pm" />
+                <Date
+                  type="screening"
+                  date="4/10/24"
+                  location="Kalamazoo&nbsp;10 at 6:30 pm"
+                />
               </div>
             </div>
           </section>
@@ -107,8 +111,8 @@ const Home: NextPage = () => {
             </div>
 
             <div>
-              <p>Kalamazoo institute of arts (kia)</p>
-              <p>314 S Park St, Kalamazoo, MI 49007</p>
+              <p>Kalamazoo 10</p>
+              <p>820 Maple Hill Dr, Kalamazoo 49009</p>
             </div>
           </div>
 
