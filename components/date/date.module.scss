@@ -3,6 +3,14 @@
 .date {
   width: fit-content;
 
+  &:nth-of-type(2) {
+    align-self: center;
+  }
+
+  &:nth-of-type(3) {
+    align-self: flex-end;
+  }
+
   .type,
   .timeLocation {
     color: $yellow;
@@ -20,11 +28,18 @@
   .type,
   .date {
     font-size: 25px;
-    text-align: center;
+    text-align: left;
   }
 
   .timeLocation {
     font-size: 18px;
-    width: 100px;
+    width: 130px;
+  }
+
+  @media only screen and (min-width: 500px) {
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      align-self: unset;
+    }
   }
 }

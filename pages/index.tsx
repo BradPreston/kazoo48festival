@@ -93,9 +93,8 @@ const Home: NextPage = () => {
                 <Date type="finish" date="4/7/24" time="6 pm" />
                 <Date
                   type="screening"
-                  date="4/10/24"
-                  // location="Kalamazoo&nbsp;10 at 6:30 pm"
-                  location="Kalamazoo&nbsp;10"
+                  date="4/25/24"
+                  location="GQT Kalamazoo 10 at 7 pm"
                 />
               </div>
             </div>
@@ -112,7 +111,7 @@ const Home: NextPage = () => {
             </div>
 
             <div>
-              <p>Kalamazoo 10</p>
+              <p>GQT Kalamazoo 10</p>
               <p>820 Maple Hill Dr, Kalamazoo 49009</p>
             </div>
           </div>
