@@ -46,7 +46,12 @@ const Home: NextPage = () => {
           </section>
 
           <div className="container">
-            <section className={styles.rules}>
+            <section className={styles.purchase} >
+              <h2>Want to come see the show?</h2>
+              <p>The screening takes place at GQT Kalamazoo 10 on April 25, 2024 at 7:00 PM. We want to see you there!</p>
+              <Button link="https://www.eventbrite.com/e/kazoo-48-premiere-awards-tickets-879026721587?aff=" text="Buy Tickets Now" />
+            </section>
+            {/* <section className={styles.rules}>
               <h2>Can you make a movie in 48 hours?</h2>
 
               <div className={styles.ruleWrapper}>
@@ -82,7 +87,7 @@ const Home: NextPage = () => {
                   <Button link="/register" text="Register" />
                 </div>
               </div>
-            </section>
+            </section> */}
           </div>
 
           <section className={styles.date}>

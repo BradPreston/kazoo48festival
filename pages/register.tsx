@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from '../styles/Register.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
 import Head from 'next/head';
+import Button from '../components/button/button';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -71,8 +72,11 @@ const Register: NextPage = () => {
       <Link href="/">
         <a className={styles.back}>Go Back</a>
       </Link>
-      <h1>Registration</h1>
-      <div className={styles.form}>
+      <h1>Registration has closed</h1>
+      <p style={{ marginBottom: 20 }}>Looking to buy tickets to the screening?</p>
+      <Button link="https://www.eventbrite.com/e/kazoo-48-premiere-awards-tickets-879026721587?aff=" text="Buy Tickets Now" />
+      {/* <h1>Registration</h1> */}
+      {/* <div className={styles.form}>
         <div className={styles.contactInfo}>
           <p>
             <label htmlFor="firstName">First Name *</label>
@@ -232,7 +236,7 @@ const Register: NextPage = () => {
           </button>
         </section>
         <p>* fields are required</p>
-      </form>
+      </form> */}
     </div>
   );
 };

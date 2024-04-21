@@ -73,6 +73,21 @@
   }
 }
 
+.purchase {
+  padding: 40px 0;
+
+  h2 {
+    color: $yellow;
+  }
+
+  p {
+    padding: 20px 0;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+  }
+}
+
 .date {
   background: $white;
   padding: 40px 0;
